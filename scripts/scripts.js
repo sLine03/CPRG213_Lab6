@@ -29,14 +29,14 @@ let duration = 0;
 // INSERT YOUR CODE HERE
 function recalculate() {
     let costLabel = document.getElementById("calculated-cost");
+    let totalCost;
 
     if (modelName == "XYZ") {
-        let totalCost = duration * 100;
-        costLabel.innerHTML = totalCost;
+        totalCost = duration * 100;
     } else if (modelName == "CPRG") {
-        let totalCost = duration * 213;
-        costLabel.innerHTML = totalCost;
+        totalCost = duration * 213;
     }
+    costLabel.innerHTML = totalCost;
 }
 
 
@@ -62,12 +62,13 @@ switchModel.addEventListener("click", changeModel);
 function changeModel() {
     let modelText = document.getElementById("model-text");
 
-    if (modelText.innerHTML === "Model XYZ"){
-        modelName = "Model CPRG";
-    } else if (modelText.innerHTML === "Model CPRG") {
-        modelName = "Model XYZ"
+    if (modelName === "XYZ"){
+        modelName = "CPRG";
+        modelText.innerHTML = "Model CPRG";
+    } else if (modelName === "CPRG") {
+        modelName = "XYZ";
+        modelText.innerHTML = "Model XYZ";
     }
-    modelText.innerHTML = modelName;
     recalculate();
 }
 
